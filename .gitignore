@@ -1,4 +1,8 @@
-﻿# Dependencies
+﻿# Legacy / Demo folders
+client/
+server/
+
+# Dependencies
 node_modules/
 /.pnp
 .pnp.js
