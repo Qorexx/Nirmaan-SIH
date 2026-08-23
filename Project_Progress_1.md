@@ -97,4 +97,57 @@ Executed automated data integrity and domain rule verification script (`scripts/
 - `scripts/generate_synthetic_data.py` — Reproducible generator and validation script.
 - `Project_Progress_1.md` — Updated progress report.
 
+---
+
+## Checkpoint 3 — Data Validation & Guardrails
+
+### What I Did
+- Implemented the reusable data validation module `ml_modules/financial/data_validation.py` containing `FinancialDataValidator` and the `ValidationResult` dataclass.
+- Built a comprehensive unit testing suite `tests/test_data_validation.py` covering 17 edge cases.
+- Validated the 500-record synthetic dataset (`data/mock_mplads.csv`), confirming 100% structural validity and zero value mutation.
+
+### How I Did It
+- **Structural Validation Rules (`is_valid = False`):**
+  - Mandatory presence and non-empty string check for `project_id`.
+  - Type parsing and non-negativity checks for `estimated_cost`, `funds_released`, `expenditure`, and `days_elapsed`.
+  - Strictly positive non-zero check for `sanctioned_amount > 0` (preventing division-by-zero errors in ratio calculations).
+  - Strictly positive non-zero check for `project_duration_days > 0`.
+  - Boundary constraint check `0 <= current_progress_pct <= 100`.
+  - Timeline boundary check `0 <= days_elapsed <= project_duration_days`.
+- **Financial Consistency Warnings (`is_valid = True`, `warnings` populated):**
+  - `expenditure > sanctioned_amount` -> `"expenditure_exceeds_sanction"`
+  - `expenditure > funds_released` -> `"expenditure_exceeds_funds_released"`
+  - `funds_released > sanctioned_amount` -> `"funds_released_exceeds_sanction"`
+  - `funds_released == 0` -> `"zero_funds_released"`
+  - `current_progress_pct == 0` and (`expenditure > 0` or `funds_released > 0`) -> `"zero_progress_with_financial_activity"`
+  - `expenditure / sanctioned_amount >= 0.80` and `5 <= current_progress_pct <= 20` -> `"high_expenditure_low_progress"`
+  - `days_elapsed / project_duration_days >= 0.85`, `funds_released / sanctioned_amount >= 0.75`, `current_progress_pct <= 15` -> `"severe_progress_mismatch"`
+- **Strict "No Value Mutation" Policy:**
+  - Original input records are preserved without normalization, clipping, or silent data repair.
+
+### Why I Did It
+- **Downstream Protection:** Machine learning models (e.g. Isolation Forest) and numerical ratio transformations require clean, structurally sound inputs without negative costs or division-by-zero errors (`sanctioned_amount <= 0`).
+- **Fraud Detection Integrity:** Genuine suspicious financial behavior (such as cost overruns or spending with zero progress) must NOT be filtered out or discarded by data validation. Marking these as valid records with warnings allows them to proceed to ML inference and rule engines for alert generation.
+
+### Verification
+- Executed `pytest tests/test_data_validation.py`: **17 / 17 tests PASSED**.
+- Executed `validate_dataset(df)` on `data/mock_mplads.csv`:
+  - **Total Records Checked:** 500
+  - **Valid Records:** 500 (100.0%)
+  - **Invalid Records:** 0
+  - **Records with Warnings:** 25 (100% of injected anomalies flagged)
+  - **Warning Distribution:** `expenditure_exceeds_sanction`: 6, `expenditure_exceeds_funds_released`: 7, `high_expenditure_low_progress`: 6, `severe_progress_mismatch`: 8, `zero_progress_with_financial_activity`: 6.
+
+### Files Created/Modified
+- `ml_modules/financial/data_validation.py` — Core validation module and dataclass structures.
+- `tests/test_data_validation.py` — Pytest unit test suite (17 test cases).
+- `Project_Progress_1.md` — Updated progress report.
+
+### Important Design Decisions
+- **`expenditure > sanctioned_amount` is suspicious, not invalid:** Cost overruns represent potential financial fraud/irregularity that must reach ML engines.
+- **`expenditure > funds_released` is suspicious, not invalid:** Disbursal delays or unofficial vendor advances are key audit flags.
+- **`funds_released > sanctioned_amount` is suspicious, not invalid:** Over-release of government funds requires flagging without data rejection.
+- **`current_progress_pct == 0` is valid:** Projects with zero progress are legitimate initial state records or "ghost project" candidates.
+- **Zero funds released handling:** `sanctioned_amount > 0` is enforced so ratio denominators are non-zero, while `funds_released == 0` triggers a zero disbursal warning without division errors.
+- **Explicit Record Rejection:** Invalid records return `is_valid = False` with explicit error descriptions, preventing corrupted data from entering feature pipelines.
 
