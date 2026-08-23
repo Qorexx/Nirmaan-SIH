@@ -9,4 +9,3 @@ scikit-learn
 requests
 pytest
 python-dotenv
-
