@@ -3,3 +3,10 @@ uvicorn==0.24.0.post1
 pydantic==2.5.2
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
+numpy
+pandas
+scikit-learn
+requests
+pytest
+python-dotenv
+
