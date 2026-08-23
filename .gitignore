@@ -96,7 +96,7 @@ models/*.onnx
 # Data
 # Synthetic datasets are intentionally TRACKED for
 # reproducible ML development and evaluation.
-#
+# data/mplads_projects.csv
 # Do NOT add data/*.csv here.
 # ============================================================
 
@@ -116,3 +116,4 @@ models/*.onnx
 # ============================================================
 
 .ipynb_checkpoints/
+data/mplads_projects.csv

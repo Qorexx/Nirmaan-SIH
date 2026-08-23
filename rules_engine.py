@@ -9,12 +9,14 @@ def generate_financial_alerts(payload: FinancialAnomalyPayload) -> list[Complian
     alerts = []
     if payload.is_anomalous:
         features_str = ", ".join(payload.anomaly_features)
+        var_str = f"₹{payload.variance_amount_inr:,.2f}" if payload.variance_amount_inr is not None else "N/A"
         alerts.append(ComplianceAlert(
             type="FINANCIAL_DEVIATION",
-            message=f"Financial anomaly detected. Key drivers: {features_str}. Variance: ₹{payload.variance_amount_inr:,.2f}",
+            message=f"Financial anomaly detected. Key drivers: {features_str}. Variance: {var_str}",
             severity="HIGH"
         ))
     return alerts
+
 
 def generate_predictive_alerts(payload: PredictiveDelayPayload) -> list[ComplianceAlert]:
     alerts = []
