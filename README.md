@@ -53,14 +53,15 @@ financial_records (financial_record_id, work_recommendation_dtl_id → projects,
 ## Repository Structure
 
 ```
-├── mplads_api_test.py     # Initial MoSPI pre-login endpoint tests
-├── mplads_pipeline.py     # Multi-state scraper, cleaner & deduplication pipeline
-├── migrate_db.py          # Database migration for normalized Supabase tables
-├── populate_db.py         # Relational database population script
-├── validate_data.py       # Data verification against official portal values
-├── requirements.txt       # Package dependencies
-├── .env.example           # Environment variable template
-└── .gitignore             # Git ignore rules
+├── mplads_api_test.py        # Initial MoSPI pre-login endpoint tests
+├── mplads_pipeline.py        # Multi-state scraper, cleaner & deduplication pipeline
+├── migrate_db.py             # Database migration for normalized Supabase tables
+├── populate_db.py            # Relational database population script
+├── feature_engineering.py    # Derived features for analytics & ML
+├── validate_data.py          # Data verification against official portal values
+├── requirements.txt          # Package dependencies
+├── .env.example              # Environment variable template
+└── .gitignore                # Git ignore rules
 ```
 
 ## Setup
@@ -92,7 +93,10 @@ python migrate_db.py
 # Step 3: Populate tables from CSV
 python populate_db.py
 
-# Step 4: Verify extracted data
+# Step 4: Generate derived features
+python feature_engineering.py
+
+# Step 5: Verify extracted data
 python validate_data.py
 ```
 
@@ -104,6 +108,7 @@ python validate_data.py
 | `mplads_pipeline.py` | Iterates over all 36 states, fetches Works Sanctioned/Recommended/Completed records, cleans column names, coerces types, deduplicates, and saves to CSV |
 | `migrate_db.py` | Creates 5 normalized tables (`states`, `constituencies`, `mps`, `projects`, `financial_records`) in Supabase with foreign key relationships |
 | `populate_db.py` | Reads the CSV and populates each normalized table with deduplicated, chunked inserts |
+| `feature_engineering.py` | Derives ~20 new columns: time gaps (approval lag, completion duration), financial ratios (utilization, cost overrun), amount buckets, stage encodings, MP/state/constituency aggregations, and text features |
 | `validate_data.py` | Samples random records and prints key fields for manual cross-verification against the official portal |
 
 ## Tech Stack
