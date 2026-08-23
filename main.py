@@ -27,6 +27,33 @@ app.add_middleware(
 def read_root():
     return {"message": "MPLADS Alert Engine API is running. Ready for frontend consumption."}
 
+# ==========================================
+# INGESTION LAYER (For ML Teams 1, 2, 3)
+# ==========================================
+
+@app.post("/api/v1/projects/{project_id}/financial-anomaly")
+def ingest_financial_anomaly(project_id: str, payload: FinancialAnomalyPayload):
+    """Person 1 (Financial AI) sends data here"""
+    # TODO: In Step 2, we will save this payload to the database
+    return {"status": "success", "message": f"Financial data received for {project_id}"}
+
+@app.post("/api/v1/projects/{project_id}/predictive-delay")
+def ingest_predictive_delay(project_id: str, payload: PredictiveDelayPayload):
+    """Person 2 (Predictive AI) sends data here"""
+    # TODO: In Step 2, we will save this payload to the database
+    return {"status": "success", "message": f"Predictive data received for {project_id}"}
+
+@app.post("/api/v1/projects/{project_id}/duplicate-detection")
+def ingest_duplicate_detection(project_id: str, payload: DuplicateDetectionPayload):
+    """Person 3 (Duplicate AI) sends data here"""
+    # TODO: In Step 2, we will save this payload to the database
+    return {"status": "success", "message": f"Duplicate detection data received for {project_id}"}
+
+
+# ==========================================
+# PRESENTATION LAYER (For Frontend Person 7)
+# ==========================================
+
 @app.get("/api/v1/projects/{project_id}/dashboard", response_model=FrontendProjectDashboard)
 def get_project_dashboard(project_id: str):
     """
