@@ -1,0 +1,16 @@
+# Environment variables (contains secrets)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files (too large for GitHub)
+mplads_projects.csv
+mplads_projects.zip
+
+# OS files
+desktop.ini
+.DS_Store
+Thumbs.db
