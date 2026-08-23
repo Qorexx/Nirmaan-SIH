@@ -40,3 +40,7 @@ __pycache__/
 venv/
 ENV/
 *.log
+
+# Local guide
+Team_Presentation_Guide.md
+duplicate-ml/Team_Presentation_Guide.md
