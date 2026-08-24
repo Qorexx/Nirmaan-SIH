@@ -85,6 +85,31 @@ async def trigger_ml_services(project_id: str, db: Session = Depends(get_db)):
 
 
 # ==========================================
+# VISION ORACLE & EVIDENCE LAYER
+# ==========================================
+from fastapi import UploadFile, File
+import vision_oracle
+
+@app.post("/api/v1/projects/{project_id}/upload-evidence")
+async def upload_geotagged_evidence(project_id: str, file: UploadFile = File(...)):
+    """
+    Accepts a geotagged photo from the contractor.
+    Runs Vision AI to verify structural progress and geofence.
+    Hashes the image for the Blockchain Trust Ledger.
+    """
+    result = vision_oracle.verify_and_hash_image(file)
+    
+    # In a real flow, we would call the Smart Contract here:
+    # contract.functions.updateProgress(project_id, 45, result['evidence_hash'])
+    
+    return {
+        "project_id": project_id,
+        "vision_verification": result,
+        "message": "Evidence cryptographically hashed and verified by Vision Oracle."
+    }
+
+
+# ==========================================
 # PRESENTATION LAYER (For Frontend Person 7)
 # ==========================================
 
