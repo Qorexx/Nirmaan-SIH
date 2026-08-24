@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # The PostgreSQL Database
+  db:
+    image: postgres:15
+    container_name: nirmaan_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: mplads_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # The FastAPI Backend Core
+  backend:
+    build: .
+    container_name: nirmaan_backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Connects to the 'db' container on port 5432
+      - DATABASE_URL=postgresql://postgres:postgrespassword@db:5432/mplads_db
+      - WEB3_PROVIDER_URL=http://host.docker.internal:8545 # Points to your local Hardhat node
+    depends_on:
+      - db
+    # This volume maps your local code into the container so you don't have to rebuild when you edit Python files!
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
