@@ -11,4 +11,3 @@ scikit-learn
 requests
 pytest
 python-dotenv
-python-multipart==0.0.6
