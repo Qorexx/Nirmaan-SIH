@@ -9,7 +9,8 @@ class FinancialAnomalyPayload(BaseModel):
     project_id: str
     is_anomalous: bool
     anomaly_features: List[str]
-    variance_amount_inr: float
+    variance_amount_inr: Optional[float] = None
+
 
 class PredictiveDelayPayload(BaseModel):
     project_id: str
