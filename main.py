@@ -8,6 +8,7 @@ import models
 import schemas
 import crud
 import rules_engine
+import ml_integrator
 
 # Attempt to create tables if DB is connected (will fail gracefully if not)
 try:
@@ -68,6 +69,19 @@ def ingest_duplicate_detection(project_id: str, payload: schemas.DuplicateDetect
             pass
             
     return {"status": "success", "alerts_generated": len(alerts)}
+
+
+# ==========================================
+# ML INTEGRATOR BRIDGE (For Persons 2 & 3)
+# ==========================================
+
+@app.post("/api/v1/projects/{project_id}/trigger-ml")
+async def trigger_ml_services(project_id: str, db: Session = Depends(get_db)):
+    """
+    Hackathon Fix: Actively calls Person 2 and Person 3's APIs
+    to fetch anomalies instead of waiting for them to POST to us.
+    """
+    return await ml_integrator.trigger_ml_services_for_project(project_id, db)
 
 
 # ==========================================
