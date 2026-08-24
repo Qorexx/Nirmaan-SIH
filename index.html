@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIRMAAN - MPLADS AI Fraud Detection & Audit Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="logo-section">
+      <a href="index.html" class="logo">
+        <h2>NIRMAAN <span>SIH-2026</span></h2>
+      </a>
+      <small class="subtitle">MPLADS AI Fraud Detection & Audit Platform</small>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="btn btn-primary">Landing Page</a>
+      <a href="dashboard.html" class="btn btn-secondary">Project Dashboard</a>
+      <span class="badge badge-on-track">Wireframe Mode</span>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <span class="badge badge-blockchain">Problem Statement SIH26102</span>
+      <h1>NIRMAAN: AI-Powered MPLADS Fraud Detection & Audit Platform</h1>
+      <p class="hero-desc">
+        Autonomous multi-oracle compliance engine leveraging financial anomaly detection, vector NLP duplicate matching, computer vision satellite audits, and blockchain trust ledgers for public infrastructure spending.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="action-buttons-group">
+        <a href="dashboard.html?id=PROJ-999" class="btn btn-primary">
+          Explore High-Risk Dashboard Sample
+        </a>
+        <a href="dashboard.html?id=PROJ-101" class="btn btn-secondary">
+          View On-Track Project Sample
+        </a>
+      </div>
+
+      <!-- Project Search Form -->
+      <form id="search-form" class="search-box">
+        <input 
+          type="text" 
+          id="project-id-input" 
+          class="input-field" 
+          placeholder="Enter MPLADS Project ID (e.g., PROJ-999, PROJ-101)..." 
+          value="PROJ-999"
+          required
+        >
+        <button type="submit" class="btn btn-primary">
+          Search & Audit Project
+        </button>
+      </form>
+
+      <!-- Quick Test Presets -->
+      <div class="presets-bar">
+        <span>Quick Load Presets:</span>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="quickLoad('PROJ-999')">
+          PROJ-999 (High Risk)
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="quickLoad('PROJ-101')">
+          PROJ-101 (On Track)
+        </button>
+      </div>
+    </section>
+
+    <!-- Module Cards Grid Wireframe -->
+    <h3 class="section-title">Core Intelligence Modules</h3>
+    <div class="grid grid-4">
+      <!-- Module 1 -->
+      <div class="card">
+        <h4>1. Financial Anomaly AI</h4>
+        <p class="card-desc">Parses invoices via OCR and monitors expenditure velocity and budget variances.</p>
+        <div class="placeholder-box">
+          [Financial Velocity Chart Placeholder]
+        </div>
+        <button class="btn btn-outline full-width">Configure Rules</button>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="card">
+        <h4>2. Duplicate NLP Matcher</h4>
+        <p class="card-desc">Sentence-BERT + FAISS vector embeddings to catch duplicate proposals and ghost projects.</p>
+        <div class="placeholder-box">
+          [Vector Similarity Score Placeholder]
+        </div>
+        <button class="btn btn-outline full-width">Run FAISS Index Scan</button>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="card">
+        <h4>3. Predictive Delay & Overrun</h4>
+        <p class="card-desc">XGBoost & Isolation Forest risk scoring with SHAP feature driver explanations.</p>
+        <div class="placeholder-box">
+          [SHAP Driver Breakdown Placeholder]
+        </div>
+        <button class="btn btn-outline full-width">Test Overrun Model</button>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="card">
+        <h4>4. Blockchain Twin-Ledger</h4>
+        <p class="card-desc">Immutable hash records of project milestones, sanctions, and payouts linked to database.</p>
+        <div class="placeholder-box">
+          [On-Chain Hash Audit Placeholder]
+        </div>
+        <button class="btn btn-outline full-width">Verify Ledger Integrity</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>NIRMAAN — AI-Driven Compliance & Audit Protocol for MPLADS</p>
+    <small>Wireframe layout ready for custom page design.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

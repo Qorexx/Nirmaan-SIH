@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIRMAAN - MPLADS Infrastructure Audit Platform</title>
+  <link rel="stylesheet" href="gov_style.css">
+</head>
+<body>
+  <!-- 1. Top Identity & Accessibility Bar -->
+  <div class="gov-top-bar">
+    <div class="gov-top-left">
+      <span id="top-satyamev">NIRMAAN Compliance System</span>
+    </div>
+    <div class="gov-top-right">
+      <a href="#main-content" id="top-skip">Skip to Main Content</a>
+      <span>|</span>
+      <div class="accessibility-controls">
+        <button type="button" class="btn-acc">A-</button>
+        <button type="button" class="btn-acc">A</button>
+        <button type="button" class="btn-acc">A+</button>
+      </div>
+      <span>|</span>
+
+      <!-- Interactive Dynamic Language Toggle Button -->
+      <button 
+        type="button" 
+        id="lang-toggle-btn" 
+        class="gov-btn gov-btn-saffron gov-btn-sm" 
+        style="padding: 0.15rem 0.6rem; font-size: 0.78rem;" 
+        onclick="toggleLanguage()"
+      >
+        <strong>English</strong> | हिंदी
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. Header with System Identity -->
+  <header class="gov-header">
+    <div class="gov-identity-flex">
+      <div class="gov-title-text">
+        <h1 id="header-title">NIRMAAN — MPLADS AI Infrastructure Audit & Compliance Platform</h1>
+        <p id="header-sub">Autonomous Multi-Oracle Compliance Engine & Fraud Analytics System</p>
+      </div>
+    </div>
+
+    <!-- System Badges -->
+    <div class="gov-partner-logos">
+      <div class="partner-logo-badge">Rules Engine Active</div>
+      <div class="partner-logo-badge">Blockchain Twin-Ledger</div>
+      <div class="partner-logo-badge">Sentinel GIS AI</div>
+    </div>
+  </header>
+
+  <!-- 3. Main Navigation Bar -->
+  <nav class="gov-nav-bar">
+    <ul class="gov-nav-menu">
+      <li class="gov-nav-item"><a href="gov_index.html" class="active" id="nav-home">Home</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-about">About Us</a></li>
+      <li class="gov-nav-item"><a href="gov_dashboard.html" id="nav-audit">Audit Command Center</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-state">State Reports</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-mp">MP Portal</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-help">Helpdesk</a></li>
+    </ul>
+    <div style="display: flex; gap: 0.5rem; align-items: center;">
+      <a href="gov_dashboard.html" class="gov-btn gov-btn-saffron gov-btn-sm" id="nav-login">
+        Auditor Login
+      </a>
+    </div>
+  </nav>
+
+  <!-- 4. Announcement Ticker Marquee -->
+  <div class="ticker-container">
+    <span class="ticker-label" id="ticker-label">System Update:</span>
+    <marquee class="ticker-marquee" scrollamount="5" id="ticker-text">
+      Platform Update: AI Early Warning Audit System for FY 2025-26 MPLADS Disbursals is now ACTIVE across all 543 Constituencies.
+    </marquee>
+  </div>
+
+  <!-- 5. Stakeholder Persona Switcher Strip -->
+  <div class="gov-persona-strip">
+    <span class="persona-label" id="persona-label">Select Stakeholder Persona View:</span>
+    <div class="gov-persona-buttons">
+      <button type="button" class="gov-persona-btn active" id="btn-persona-ministry" data-persona="ministry" onclick="setGovPersona('ministry')">
+        Central Executive View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-state" data-persona="state" onclick="setGovPersona('state')">
+        State Nodal View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-district" data-persona="district" onclick="setGovPersona('district')">
+        District Authority View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-mp" data-persona="mp" onclick="setGovPersona('mp')">
+        MP Portal View
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main id="main-content" class="gov-main">
+    <!-- Dynamic Persona Metrics Bar -->
+    <div id="gov-metrics-container" class="gov-metrics-grid">
+      <!-- Dynamically populated by gov_script.js -->
+    </div>
+
+    <!-- Project Search Card -->
+    <div class="gov-card">
+      <div class="gov-card-header">
+        <h3 id="search-heading">Search & Audit MPLADS Project Sanction</h3>
+      </div>
+      <div style="text-align: center; padding: 1rem 0;">
+        <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;" id="search-desc">
+          Enter a Project ID to inspect AI compliance warnings, physical vs financial disbursal gaps, and blockchain audit logs.
+        </p>
+
+        <form id="gov-search-form" class="gov-search-form">
+          <input 
+            type="text" 
+            id="gov-project-id-input" 
+            class="gov-input" 
+            placeholder="Enter Project ID (e.g., PROJ-999, PROJ-101)..." 
+            value="PROJ-999"
+            required
+          >
+          <button type="submit" class="gov-btn gov-btn-primary" id="search-btn">
+            Audit Project Search
+          </button>
+        </form>
+
+        <div style="margin-top: 1rem; font-size: 0.82rem;">
+          <strong id="preset-label">Quick Audit Presets:</strong> &nbsp;
+          <button type="button" class="gov-btn gov-btn-secondary gov-btn-sm" id="preset-high-risk" onclick="quickLoadGov('PROJ-999')">
+            PROJ-999 (High Priority Audit Flag)
+          </button>
+          <button type="button" class="gov-btn gov-btn-secondary gov-btn-sm" id="preset-on-track" onclick="quickLoadGov('PROJ-101')">
+            PROJ-101 (Standard Progress)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Stakeholder Command Center Views Grid -->
+    <h3 style="color: var(--gov-navy); margin-bottom: 0.8rem; border-bottom: 2px solid var(--gov-saffron); padding-bottom: 0.3rem;" id="dashboards-title">
+      Stakeholder Audit Command Dashboards
+    </h3>
+    <div class="gov-metrics-grid">
+      <!-- Ministry View -->
+      <div class="gov-card" style="border-top-color: #002b49;">
+        <h4 style="color: var(--gov-navy);" id="card-ministry-title">1. Central Executive View</h4>
+        <p style="font-size: 0.82rem; color: #555; margin: 0.5rem 0 1rem 0;" id="card-ministry-desc">
+          Macro fund utilization analytics, state-wise compliance rankings, and high-priority national flags.
+        </p>
+        <button type="button" class="gov-btn gov-btn-primary" style="width: 100%; justify-content: center;" onclick="setGovPersona('ministry'); quickLoadGov('PROJ-999');">
+          <span class="launch-btn-text">Launch View</span>
+        </button>
+      </div>
+
+      <!-- State View -->
+      <div class="gov-card" style="border-top-color: #004080;">
+        <h4 style="color: var(--gov-navy);" id="card-state-title">2. State Nodal Authority View</h4>
+        <p style="font-size: 0.82rem; color: #555; margin: 0.5rem 0 1rem 0;" id="card-state-desc">
+          State-wide fund disbursals, district-level compliance rankings, and pending sanction reviews.
+        </p>
+        <button type="button" class="gov-btn gov-btn-primary" style="width: 100%; justify-content: center;" onclick="setGovPersona('state'); quickLoadGov('PROJ-999');">
+          <span class="launch-btn-text">Launch View</span>
+        </button>
+      </div>
+
+      <!-- District View -->
+      <div class="gov-card" style="border-top-color: #cc6600;">
+        <h4 style="color: var(--gov-navy);" id="card-district-title">3. District Authority View</h4>
+        <p style="font-size: 0.82rem; color: #555; margin: 0.5rem 0 1rem 0;" id="card-district-desc">
+          Executing agency performance tracking, drone/photo EXIF milestone queue, and compliance notice issuance.
+        </p>
+        <button type="button" class="gov-btn gov-btn-saffron" style="width: 100%; justify-content: center;" onclick="setGovPersona('district'); quickLoadGov('PROJ-999');">
+          <span class="launch-btn-text">Launch View</span>
+        </button>
+      </div>
+
+      <!-- MP View -->
+      <div class="gov-card" style="border-top-color: #138808;">
+        <h4 style="color: var(--gov-navy);" id="card-mp-title">4. Member of Parliament (MP) View</h4>
+        <p style="font-size: 0.82rem; color: #555; margin: 0.5rem 0 1rem 0;" id="card-mp-desc">
+          Constituency recommended works, real-time physical progress tracking, and citizen transparency log.
+        </p>
+        <button type="button" class="gov-btn gov-btn-primary" style="width: 100%; justify-content: center; background-color: var(--gov-green);" onclick="setGovPersona('mp'); quickLoadGov('PROJ-999');">
+          <span class="launch-btn-text">Launch View</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="gov-footer">
+    <div class="gov-footer-grid">
+      <div class="gov-footer-col">
+        <h4 id="footer-links">Important Links</h4>
+        <ul>
+          <li><a href="#">MPLADS Protocol Guidelines</a></li>
+          <li><a href="#">API Documentation</a></li>
+          <li><a href="#">System Architecture</a></li>
+        </ul>
+      </div>
+
+      <div class="gov-footer-col">
+        <h4 id="footer-policies">Policies & Support</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Security Audit Guidelines</a></li>
+        </ul>
+      </div>
+
+      <div class="gov-footer-col">
+        <h4 id="footer-contact">Contact Hub</h4>
+        <p style="font-size: 0.8rem; color: #d1d5db;">
+          NIRMAAN Platform Architecture<br>
+          MPLADS Fraud Detection & Compliance System<br>
+          Email: support@nirmaan-audit.org
+        </p>
+      </div>
+    </div>
+
+    <div class="gov-footer-bottom">
+      <p id="footer-managed-by">NIRMAAN — AI-Driven Compliance & Audit Protocol for MPLADS Infrastructure Projects.</p>
+      <p id="footer-hosted-by">Platform System Architecture & Immutable Ledger Engine | Content Ownership: NIRMAAN Audit Engine</p>
+    </div>
+  </footer>
+
+  <script src="gov_script.js"></script>
+</body>
+</html>

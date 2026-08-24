@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIRMAAN - Official Compliance Control & Audit Command Center</title>
+  <link rel="stylesheet" href="gov_style.css">
+</head>
+<body>
+  <!-- 1. Top Identity & Accessibility Bar -->
+  <div class="gov-top-bar">
+    <div class="gov-top-left">
+      <span id="top-satyamev">NIRMAAN Compliance System</span>
+    </div>
+    <div class="gov-top-right">
+      <a href="#main-content" id="top-skip">Skip to Main Content</a>
+      <span>|</span>
+      <div class="accessibility-controls">
+        <button type="button" class="btn-acc">A-</button>
+        <button type="button" class="btn-acc">A</button>
+        <button type="button" class="btn-acc">A+</button>
+      </div>
+      <span>|</span>
+
+      <!-- Interactive Dynamic Language Toggle Button -->
+      <button 
+        type="button" 
+        id="lang-toggle-btn" 
+        class="gov-btn gov-btn-saffron gov-btn-sm" 
+        style="padding: 0.15rem 0.6rem; font-size: 0.78rem;" 
+        onclick="toggleLanguage()"
+      >
+        <strong>English</strong> | हिंदी
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. Header with System Identity -->
+  <header class="gov-header">
+    <div class="gov-identity-flex">
+      <div class="gov-title-text">
+        <h1 id="header-title">NIRMAAN — MPLADS AI Infrastructure Audit & Compliance Platform</h1>
+        <p id="header-sub">Official Compliance Control & Audit Command Center</p>
+      </div>
+    </div>
+
+    <div class="gov-partner-logos">
+      <div class="partner-logo-badge">Rules Engine Active</div>
+      <div class="partner-logo-badge">Blockchain Twin-Ledger</div>
+      <div class="partner-logo-badge">Sentinel GIS AI</div>
+    </div>
+  </header>
+
+  <!-- 3. Main Navigation Bar -->
+  <nav class="gov-nav-bar">
+    <ul class="gov-nav-menu">
+      <li class="gov-nav-item"><a href="gov_index.html" id="nav-home">Home</a></li>
+      <li class="gov-nav-item"><a href="gov_dashboard.html" class="active" id="nav-audit">Audit Command Center</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-state">State Reports</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-mp">MP Portal</a></li>
+      <li class="gov-nav-item"><a href="#" id="nav-help">Helpdesk</a></li>
+    </ul>
+    <div>
+      <a href="gov_index.html" class="gov-btn gov-btn-secondary gov-btn-sm" id="nav-back">
+        Back to Landing Page
+      </a>
+    </div>
+  </nav>
+
+  <!-- 4. Stakeholder Persona Switcher Strip -->
+  <div class="gov-persona-strip">
+    <span class="persona-label" id="persona-label">Select Stakeholder Persona View:</span>
+    <div class="gov-persona-buttons">
+      <button type="button" class="gov-persona-btn active" id="btn-persona-ministry" data-persona="ministry" onclick="setGovPersona('ministry')">
+        Central Executive View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-state" data-persona="state" onclick="setGovPersona('state')">
+        State Nodal View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-district" data-persona="district" onclick="setGovPersona('district')">
+        District Authority View
+      </button>
+      <button type="button" class="gov-persona-btn" id="btn-persona-mp" data-persona="mp" onclick="setGovPersona('mp')">
+        MP View
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main id="main-content" class="gov-main">
+    <!-- Stakeholder Persona Scope Header Banner -->
+    <div style="background: #002b49; color: white; padding: 0.8rem 1.25rem; border-radius: 3px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h3 id="gov-banner-title" style="font-size: 1.1rem; color: #ff9933;">Central Executive Command Center</h3>
+        <p id="gov-banner-sub" style="font-size: 0.82rem; color: #d1d5db;">National Compliance Monitoring & Country-Wide Early Warning Audit</p>
+      </div>
+      <div>
+        <span class="gov-tag tag-on-track">NIRMAAN Audit Log Active</span>
+      </div>
+    </div>
+
+    <!-- Dynamic Persona Metrics Bar -->
+    <div id="gov-metrics-container" class="gov-metrics-grid">
+      <!-- Dynamically populated by gov_script.js -->
+    </div>
+
+    <!-- Toast Notification Box -->
+    <div id="gov-toast-box" class="gov-toast hidden"></div>
+
+    <!-- Project Audit Card -->
+    <div class="gov-card">
+      <div class="gov-card-header">
+        <h3 id="spec-heading">Project Audit Specification</h3>
+        <span class="gov-tag tag-critical" id="high-priority-tag">High Priority Audit Flag</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="gov-tag tag-medium" id="gov-display-project-id">Project ID: PROJ-999</span>
+          <h2 id="gov-display-project-name" style="color: var(--gov-navy); margin-top: 0.4rem; font-size: 1.2rem;">
+            Water Treatment Plant & Community Facility Construction
+          </h2>
+          <p id="gov-display-project-meta" style="font-size: 0.85rem; color: #555; margin-top: 0.25rem;">
+            Executing Agency: Marut Construction Ltd. | Sanctioned Amount: ₹1.50 Crore | District: Jaipur (Rajasthan)
+          </p>
+        </div>
+
+        <div>
+          <span class="gov-tag tag-on-track" id="hash-verified-tag" style="font-size: 0.8rem; padding: 0.3rem 0.7rem;">
+            Blockchain Hash Verified
+          </span>
+        </div>
+      </div>
+
+      <!-- Financial vs Physical Progress Summary -->
+      <div id="gov-display-progress-summary" style="margin-top: 1rem; padding: 0.75rem; background: #f9f9f9; border: 1px solid #ddd; border-radius: 2px; font-size: 0.88rem;">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <!-- Official Alert Notice Feed & Satellite Verification Grid -->
+    <div class="gov-metrics-grid" style="grid-template-columns: 1.2fr 0.8fr;">
+      <!-- Actionable Compliance Alerts Feed -->
+      <div class="gov-card" style="border-top-color: #d9534f;">
+        <div class="gov-card-header">
+          <h3 id="alerts-header">Active Compliance Action Feed</h3>
+        </div>
+
+        <p style="font-size: 0.82rem; color: #555; margin-bottom: 1rem;" id="alerts-desc">
+          Actionable compliance notices generated by Rules Engine based on MPLADS guidelines.
+        </p>
+
+        <!-- Alert Feed Container -->
+        <div id="gov-alert-feed-container" class="gov-alert-feed">
+          <!-- Populated dynamically by gov_script.js -->
+        </div>
+      </div>
+
+      <!-- Satellite & Drone EXIF Photo Verification -->
+      <div>
+        <div class="gov-card" style="border-top-color: #002b49;">
+          <div class="gov-card-header">
+            <h3 id="sat-header">Satellite & Drone Verification</h3>
+          </div>
+
+          <p style="font-size: 0.82rem; color: #555; margin-bottom: 0.8rem;" id="sat-desc">
+            Sentinel-2 imagery & EXIF photo metadata validation container.
+          </p>
+
+          <div style="border: 2px dashed #ccc; background: #f9f9f9; padding: 1.25rem; text-align: center; color: #555; font-size: 0.85rem;">
+            <p><strong id="sat-box-title">[ Mapbox GL / PostGIS Spatial View Placeholder ]</strong></p>
+            <p style="font-size: 0.78rem; margin-top: 0.4rem;">Target Coordinates: (28.6139, 77.2090) | Jaipur Rural</p>
+            <div style="margin-top: 0.8rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="gov-btn gov-btn-primary gov-btn-sm" id="fetch-sat-btn" onclick="triggerGovAction('Sentinel Satellite Imagery Fetched', 'Sentinel-2')">
+                Fetch Sentinel-2 Satellite Overlay
+              </button>
+              <button type="button" class="gov-btn gov-btn-secondary gov-btn-sm" id="audit-exif-btn" onclick="triggerGovAction('Drone Photo EXIF Audited', 'Geofence')">
+                Audit EXIF Photo Geofence
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gov-card" style="border-top-color: #cc6600;">
+          <div class="gov-card-header">
+            <h3 id="gnn-header">Contractor Matrix (GNN Graph)</h3>
+          </div>
+          <p style="font-size: 0.82rem; color: #555; margin-bottom: 0.6rem;" id="gnn-desc">
+            Graph Neural Network (GCN) analysis of shared bank accounts and circular bidding.
+          </p>
+          <div style="border: 2px dashed #ccc; background: #f9f9f9; padding: 1rem; text-align: center; color: #555; font-size: 0.82rem;" id="gnn-box">
+            [ Marut Construction Ltd. Relational Network Graph ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="gov-footer">
+    <div class="gov-footer-grid">
+      <div class="gov-footer-col">
+        <h4 id="footer-links">Important Links</h4>
+        <ul>
+          <li><a href="#">MPLADS Protocol Guidelines</a></li>
+          <li><a href="#">API Documentation</a></li>
+          <li><a href="#">System Architecture</a></li>
+        </ul>
+      </div>
+
+      <div class="gov-footer-col">
+        <h4 id="footer-policies">Policies & Support</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Security Audit Guidelines</a></li>
+        </ul>
+      </div>
+
+      <div class="gov-footer-col">
+        <h4 id="footer-contact">Contact Hub</h4>
+        <p style="font-size: 0.8rem; color: #d1d5db;">
+          NIRMAAN Platform Architecture<br>
+          MPLADS Fraud Detection & Compliance System<br>
+          Email: support@nirmaan-audit.org
+        </p>
+      </div>
+    </div>
+
+    <div class="gov-footer-bottom">
+      <p id="footer-managed-by">NIRMAAN — AI-Driven Compliance & Audit Protocol for MPLADS Infrastructure Projects.</p>
+      <p id="footer-hosted-by">Platform System Architecture & Immutable Ledger Engine | Content Ownership: NIRMAAN Audit Engine</p>
+    </div>
+  </footer>
+
+  <script src="gov_script.js"></script>
+</body>
+</html>
