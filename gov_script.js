@@ -10,7 +10,7 @@ let govPersona = 'ministry';
 const TRANSLATIONS = {
  en: {
  topGovText: '',
- satyamev: 'NIRMAAN Compliance System',
+ satyamev: 'MINISTRY OF STATISTICS AND PROGRAMME IMPLEMENTATION',
  skipContent: 'Skip to Main Content',
  ministryTitle: 'NIRMAAN — MPLADS AI Infrastructure Audit & Compliance Platform',
  ministryGov: '',

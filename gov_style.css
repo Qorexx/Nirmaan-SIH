@@ -48,7 +48,7 @@ body {
 .gov-top-bar {
   background-color: var(--gov-header-top);
   color: #ffffff;
-  padding: 0.5rem 2rem;
+  padding: 0.35rem 2rem;
   font-size: 0.78rem;
   display: flex;
   justify-content: space-between;
