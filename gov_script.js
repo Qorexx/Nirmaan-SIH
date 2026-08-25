@@ -560,35 +560,7 @@ async function loadGovDashboardData() {
  let project = dbMap[projectId] || dbMap['PROJ-999'];
  const t = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
 
- // --- HACKATHON BACKEND INTEGRATION ---
- try {
-   // Fetch from our real FastAPI backend!
-   const response = await fetch(`http://localhost:8000/api/v1/projects/${projectId}/dashboard`);
-   if (response.ok) {
-     const backendData = await response.json();
-     
-     // Clone the static object so we don't mutate the original DB
-     project = JSON.parse(JSON.stringify(project));
-     
-     // Override the static alerts with the real AI-generated alerts from Python
-     project.alerts = backendData.compliance_alerts.map(a => ({
-        type: a.type,
-        severity: a.severity || 'HIGH',
-        title: `AI Alert: ${a.type}`,
-        message: a.message,
-        actionRequired: 'Review backend logs and conduct physical verification.'
-     }));
-     
-     // Override blockchain status if available
-     if (backendData.blockchain_verified !== undefined) {
-         project.bc_status = backendData.blockchain_verified ? 'VERIFIED' : 'UNVERIFIED';
-     }
-     console.log("Successfully loaded REAL AI data from FastAPI backend!");
-   }
- } catch (e) {
-   console.log("Backend offline, safely falling back to static presentation data.");
- }
- // ------------------------------------
+ 
 
  const elId = document.getElementById('gov-display-project-id');
  const elTitle = document.getElementById('gov-display-project-name');
