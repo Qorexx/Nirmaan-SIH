@@ -237,132 +237,125 @@ const GOV_PERSONAS = {
 };
 
 const GOV_ALERTS_DB = {
- en: {
- 'PROJ-999': {
- id: 'PROJ-999',
- title: 'Water Treatment Plant & Community Facility Construction',
- agency: 'Marut Construction Ltd.',
- state: 'Rajasthan',
- district: 'Jaipur',
- constituency: 'Jaipur Rural',
- sanctionedAmount: '₹1.50 Crore',
- disbursedPercent: 75,
- physicalProgressPercent: 20,
- alerts: [
- {
- type: 'FINANCIAL_DISCREPANCY',
- severity: 'CRITICAL',
- title: ' Severe Progress-Disbursal Mismatch (Financial Progress Discrepancy)',
- message: '75% of sanctioned funds (₹1.125 Crore) have been disbursed to contractor, but verified physical milestone progress is only 20%. 55% deviation from compliance guidelines.',
- actionRequired: 'Freeze further financial release until District Collector conducts physical inspection.'
- },
- {
- type: 'DUPLICATE_PROPOSAL',
- severity: 'CRITICAL',
- title: ' Duplicate Work Vector Match (92.5% Overlap)',
- message: 'Proposal title and GPS coordinates overlap by 92.5% with historical project PROJ-2022-001 (Sanctioned in 2022 at same Gram Panchayat). Suspected duplicate funding request.',
- actionRequired: 'Compare vector embedding signatures against state asset register.'
- },
- {
- type: 'DELAY_FORECAST',
- severity: 'HIGH',
- title: ' Forecasted Milestone Overrun (+45 Days Delay Forecast)',
- message: 'Predictive ML model (XGBoost/SHAP) forecasts project completion delay of 45 days. Key driver: Contractor historical milestone lag across 3 adjacent districts.',
- actionRequired: 'Issue official compliance warning notice to District Executing Engineer.'
- },
- {
- type: 'BLOCKCHAIN_AUDIT',
- severity: 'MEDIUM',
- title: ' Blockchain Twin-Ledger Hash Verified',
- message: 'Cryptographic proof of sanction approval and initial 20% milestone hash verified on-chain. Zero tampering detected in ledger logs.',
- actionRequired: 'Verify cryptographic signature hash against PostgreSQL database.'
- }
- ]
- },
- 'PROJ-101': {
- id: 'PROJ-101',
- title: 'Rural Solar Street Lighting Installation (Phase II)',
- agency: 'Rajasthan Renewable Energy Corp. (RREC)',
- state: 'Rajasthan',
- district: 'Jaipur',
- constituency: 'Jaipur Rural',
- sanctionedAmount: '₹45.00 Lakhs',
- disbursedPercent: 40,
- physicalProgressPercent: 42,
- alerts: [
- {
- type: 'BLOCKCHAIN_AUDIT',
- severity: 'MEDIUM',
- title: ' Milestone On-Chain Verification Complete',
- message: 'Milestone 1 (Material Procurement & Pole Erection) verified via geo-tagged EXIF photo audit and signed on-chain.',
- actionRequired: 'Proceed with standard milestone disbursement according to rules.'
- }
- ]
- }
- },
- hi: {
- 'PROJ-999': {
- id: 'PROJ-999',
- title: 'जल शोधन संयंत्र एवं सामुदायिक भवन निर्माण (Water Treatment & Community Center)',
- agency: 'मुरुत कंस्ट्रक्शन लि. (Marut Construction Ltd.)',
- state: 'राजस्थान (Rajasthan)',
- district: 'जयपुर (Jaipur)',
- constituency: 'जयपुर ग्रामीण (Jaipur Rural)',
- sanctionedAmount: '₹1.50 करोड़ (1.50 Crore)',
- disbursedPercent: 75,
- physicalProgressPercent: 20,
- alerts: [
- {
- type: 'FINANCIAL_DISCREPANCY',
- severity: 'CRITICAL',
- title: ' वित्तीय संवितरण एवं भौतिक प्रगति में गंभीर अंतर (Progress Mismatch)',
- message: 'ठेकेदार को 75% स्वीकृत निधि (₹1.125 करोड़) जारी की जा चुकी है, जबकि स्थल पर सत्यापित भौतिक प्रगति केवल 20% है। दिशा-निर्देशों से 55% का विचलन।',
- actionRequired: 'जिला कलेक्टर द्वारा भौतिक सत्यापन किए जाने तक अगली किस्त पर रोक लगाएं।'
- },
- {
- type: 'DUPLICATE_PROPOSAL',
- severity: 'CRITICAL',
- title: ' पुनरावृत्त प्रस्ताव संदेह (Duplicate Match - 92.5%)',
- message: 'प्रस्ताव के नाम एवं GPS निर्देशांकों का 92.5% मिलान वर्ष 2022 की पुरानी स्वीकृत परियोजना PROJ-2022-001 से हुआ है। एक ही ग्राम पंचायत में पुनरावृत्त निधि अनुरोध का संदेह।',
- actionRequired: '2022 के राज्य संपत्ति रजिस्टर से वेक्टर हस्ताक्षर का मिलान करें।'
- },
- {
- type: 'DELAY_FORECAST',
- severity: 'HIGH',
- title: ' कार्य विलंब पूर्वानुमान (+45 दिन / 45 Days Overrun)',
- message: 'एआई पूर्वानुमान मॉडल (XGBoost/SHAP) के अनुसार परियोजना समय सीमा से 45 दिन पीछे चल रही है। मुख्य कारण: ठेकेदार का पिछला विलंब इतिहास।',
- actionRequired: 'कार्यन्वयन इंजीनियर को आधिकारिक चेतावनी नोटिस जारी करें।'
- },
- {
- type: 'BLOCKCHAIN_AUDIT',
- severity: 'MEDIUM',
- title: ' ऑन-चेन ब्लॉकचेन सत्यापन (Blockchain Hash Verified)',
- message: 'स्वीकृति एवं 20% मील के पत्थर का क्रिप्टोग्राफिक हैश ब्लॉकचेन बहीखाते पर दर्ज है। डेटा से कोई छेड़छाड़ नहीं पाई गई।',
- actionRequired: 'PostgreSQL डेटाबेस के साथ cryptographic signature की जांच करें।'
- }
- ]
- },
- 'PROJ-101': {
- id: 'PROJ-101',
- title: 'ग्रामीण सोलर स्ट्रीट लाइट स्थापना परियोजना (Rural Solar Lighting)',
- agency: 'राजस्थान अक्षय ऊर्जा निगम (RREC)',
- state: 'राजस्थान (Rajasthan)',
- district: 'जयपुर (Jaipur)',
- constituency: 'जयपुर ग्रामीण (Jaipur Rural)',
- sanctionedAmount: '₹45.00 लाख (45.00 Lakhs)',
- disbursedPercent: 40,
- physicalProgressPercent: 42,
- alerts: [
- {
- type: 'BLOCKCHAIN_AUDIT',
- severity: 'MEDIUM',
- title: ' मील के पत्थर का ऑन-चेन सत्यापन पूर्ण',
- message: 'चरण 1 (सामग्री खरीद एवं खंभा स्थापना) का EXIF फोटो ऑडिट द्वारा सत्यापन पूर्ण। ब्लॉकचेन पर दर्ज।',
- actionRequired: 'मानक प्रक्रिया के अनुसार अगली किस्त जारी की जा सकती है।'
- }
- ]
- }
- }
+  'en': {
+    'PROJ-001': {
+      id: 'PROJ-001',
+      title: 'Primary School Renovation',
+      agency: 'Apex Builders Ltd.',
+      state: 'Karnataka',
+      district: 'Bengaluru Urban',
+      constituency: 'Bengaluru South',
+      sanctionedAmount: '₹50 Lakhs',
+      disbursedPercent: 10,
+      physicalProgressPercent: 12,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x1a2b...9c8d',
+      alerts: [] // No alerts, baseline
+    },
+    'PROJ-999': {
+      id: 'PROJ-999',
+      title: 'Water Treatment Plant & Community Facility Construction',
+      agency: 'Marut Construction Ltd.',
+      state: 'Rajasthan',
+      district: 'Jaipur',
+      constituency: 'Jaipur Rural',
+      sanctionedAmount: '₹1.50 Crore',
+      disbursedPercent: 75,
+      physicalProgressPercent: 20,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x5FbDB2315678afecb367f032d93F642f64180aa3', // From Hardhat output
+      alerts: [
+        {
+          type: 'FINANCIAL_DISCREPANCY',
+          severity: 'CRITICAL',
+          title: '🚨 Financial Progress Discrepancy (Isolation Forest)',
+          message: '75% of sanctioned funds (₹1.125 Crore) have been disbursed, but verified physical milestone progress is only 20%. 55% deviation from compliance guidelines.',
+          actionRequired: 'Freeze further financial release until District Collector conducts physical inspection.'
+        },
+        {
+          type: 'DUPLICATE_PROPOSAL',
+          severity: 'HIGH',
+          title: '⚠️ Duplicate Proposal Flag (FAISS / NLP)',
+          message: 'Semantic similarity match (89.2%) detected with historically completed project "Community Water Center" in adjacent block (FY 2021-22). Possible Double-Dipping attempt.',
+          actionRequired: 'Cross-reference GIS coordinates with PROJ-2021-442.'
+        },
+        {
+          type: 'PREDICTIVE_DELAY',
+          severity: 'MEDIUM',
+          title: '⚠️ Predictive Delay Risk (XGBoost)',
+          message: 'Current milestone completion rate indicates a 92% probability of 4+ months delay beyond expected completion date.',
+          actionRequired: 'Issue formal notice to State Nodal Agency for expedited material procurement.'
+        }
+      ]
+    },
+    'PROJ-SAFE': {
+      id: 'PROJ-SAFE',
+      title: 'Solar Street Lighting Installation',
+      agency: 'EcoPower Solutions',
+      state: 'Gujarat',
+      district: 'Surat',
+      constituency: 'Surat',
+      sanctionedAmount: '₹2.00 Crore',
+      disbursedPercent: 100,
+      physicalProgressPercent: 100,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x8f2a...391c',
+      alerts: []
+    }
+  },
+  'hi': {
+
+    'PROJ-001': {
+      id: 'PROJ-001',
+      title: 'प्राथमिक विद्यालय नवीनीकरण',
+      agency: 'एपेक्स बिल्डर्स लि.',
+      state: 'कर्नाटक',
+      district: 'बेंगलुरु शहरी',
+      constituency: 'बेंगलुरु दक्षिण',
+      sanctionedAmount: '₹50 लाख',
+      disbursedPercent: 10,
+      physicalProgressPercent: 12,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x1a2b...9c8d',
+      alerts: []
+    },
+    'PROJ-999': {
+      id: 'PROJ-999',
+      title: 'जल शोधन संयंत्र एवं सामुदायिक भवन निर्माण',
+      agency: 'मुरुत कंस्ट्रक्शन लि.',
+      state: 'राजस्थान',
+      district: 'जयपुर',
+      constituency: 'जयपुर ग्रामीण',
+      sanctionedAmount: '₹1.50 करोड़',
+      disbursedPercent: 75,
+      physicalProgressPercent: 20,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+      alerts: [
+        {
+          type: 'FINANCIAL_DISCREPANCY',
+          severity: 'CRITICAL',
+          title: '🚨 वित्तीय प्रगति में गंभीर विचलन',
+          message: '75% स्वीकृत निधि जारी की जा चुकी है, जबकि भौतिक प्रगति केवल 20% है।',
+          actionRequired: 'जिला कलेक्टर द्वारा भौतिक सत्यापन किए जाने तक अगली किस्त पर रोक लगाएं।'
+        }
+      ]
+    },
+    'PROJ-SAFE': {
+      id: 'PROJ-SAFE',
+      title: 'सौर स्ट्रीट लाइटिंग स्थापना',
+      agency: 'इकोपावर सॉल्यूशंस',
+      state: 'गुजरात',
+      district: 'सूरत',
+      constituency: 'सूरत',
+      sanctionedAmount: '₹2.00 करोड़',
+      disbursedPercent: 100,
+      physicalProgressPercent: 100,
+      bc_status: 'VERIFIED',
+      bc_hash: '0x8f2a...391c',
+      alerts: []
+    }
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -581,7 +574,30 @@ async function loadGovDashboardData() {
  `;
  }
 
- renderGovAlertFeed(project.alerts);
+  const alertContainer = document.getElementById('gov-alert-feed-container');
+  if (alertContainer) {
+    alertContainer.innerHTML = `
+      <div style="text-align: center; padding: 3rem; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <button id="trigger-ai-btn" class="gov-btn gov-btn-saffron" style="font-size: 1.1rem; padding: 0.8rem 2rem; cursor: pointer; transition: 0.2s;">
+          <span id="ai-btn-text">🚀 Initiate AI Compliance Scan</span>
+        </button>
+        <p style="margin-top: 1rem; color: #555; font-size: 0.95rem; font-family: monospace; height: 1.5rem;" id="ai-loading-text"></p>
+      </div>
+    `;
+
+    document.getElementById('trigger-ai-btn').addEventListener('click', function() {
+      const btn = this;
+      const text = document.getElementById('ai-loading-text');
+      btn.style.display = 'none';
+      text.innerHTML = '<i>Initializing Isolation Forest Anomaly Detection...</i>';
+      
+      setTimeout(() => { text.innerHTML = '<i>Running FAISS Semantic Similarity Check...</i>'; }, 800);
+      setTimeout(() => { text.innerHTML = '<i>Calculating XGBoost Delay Risk Matrix...</i>'; }, 1700);
+      setTimeout(() => { 
+        renderGovAlertFeed(project.alerts);
+      }, 2600);
+    });
+  }
 }
 
 function renderGovAlertFeed(alerts) {
