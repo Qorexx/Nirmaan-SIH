@@ -579,7 +579,7 @@ async function loadGovDashboardData() {
     alertContainer.innerHTML = `
       <div style="text-align: center; padding: 3rem; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
         <button id="trigger-ai-btn" class="gov-btn gov-btn-saffron" style="font-size: 1.1rem; padding: 0.8rem 2rem; cursor: pointer; transition: 0.2s;">
-          <span id="ai-btn-text">🚀 Initiate AI Compliance Scan</span>
+          <span id="ai-btn-text">Initiate AI Compliance Scan</span>
         </button>
         <p style="margin-top: 1rem; color: #555; font-size: 0.95rem; font-family: monospace; height: 1.5rem;" id="ai-loading-text"></p>
       </div>
