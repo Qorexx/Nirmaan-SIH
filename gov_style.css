@@ -212,9 +212,24 @@ body {
   white-space: nowrap;
 }
 
+.ticker-marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+}
+
 .ticker-marquee {
+  display: inline-block;
   color: var(--gov-navy);
   font-weight: 600;
+  will-change: transform;
+  animation: scroll-left 15s linear infinite;
+  transform: translateZ(0); /* Hardware Acceleration */
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
 }
 
 /* 5. Persona Switcher Strip */
